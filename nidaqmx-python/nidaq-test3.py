@@ -11,7 +11,6 @@ i=0
 with nidaqmx.Task() as master_task:
     master_task.ai_channels.add_ai_accel_chan("cDAQ1Mod2/ai0")
 
-  
     master_task.timing.cfg_samp_clk_timing(
         50000, sample_mode=AcquisitionType.CONTINUOUS)
    

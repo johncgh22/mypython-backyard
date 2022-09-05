@@ -1,4 +1,3 @@
-from platform import mac_ver
 import nidaqmx
 import matplotlib.pyplot as plt
 
