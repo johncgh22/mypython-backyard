@@ -3,13 +3,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 from nidaqmx.constants import AcquisitionType, TaskMode
 
-t = np.linspace(0, 1, 5000, endpoint=True)
+t = np.linspace(0, 1, 500, endpoint=True)
 
 plt.ion()
 i=0
 
 with nidaqmx.Task() as master_task:
-    master_task.ai_channels.add_ai_accel_chan("cDAQ1Mod2/ai0")
+    master_task.ai_channels.add_ai_accel_chan("cDAQ9189-1E302D5Mod3/ai0")
 
     master_task.timing.cfg_samp_clk_timing(
         50000, sample_mode=AcquisitionType.CONTINUOUS)
@@ -19,7 +19,7 @@ with nidaqmx.Task() as master_task:
     master_task.start()
 
     while i<100:
-        master_data = master_task.read(number_of_samples_per_channel=5000)
+        master_data = master_task.read(number_of_samples_per_channel=500)
         plt.plot(t,master_data)
         plt.pause(0.01)
         plt.gcf().clear()

@@ -16,7 +16,7 @@ plt.ion()
 i = 0
 
 with nidaqmx.Task() as task:
-    task.ai_channels.add_ai_accel_chan("cDAQ1Mod2/ai0",
+    task.ai_channels.add_ai_accel_chan("cDAQ9189-1E302D5Mod3/ai0",
     name_to_assign_to_channel="accelerometer",
     terminal_config=TerminalConfiguration.DEFAULT,
     min_val=-5.0, max_val=5.0, units=AccelUnits.G,
@@ -29,14 +29,13 @@ with nidaqmx.Task() as task:
 
     while i<100:
         data = task.read(number_of_samples_per_channel=500)
+        plt.figure('Figura1')
         plt.plot(t, data)
         plt.grid()
         plt.pause(0.01)
         plt.gcf().clear()
         i = i + 1
-        print(data)
 
     plt.close()
-
 
     
